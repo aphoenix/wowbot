@@ -23,11 +23,11 @@ client = discord.Client()
 client.login(creds.discordid, creds.discordpw)
 
 
-with open(quotes.txt) as f:
+with open('quotes.txt') as f:
     quotes = f.readlines()
-with open(helpmessage.txt) as f:
+with open('helpmessage.txt') as f:
     helpmessage = f.read()
-with open(roles.txt) as f:
+with open('roles.txt') as f:
     roles = f.readlines()
 
 lockroles = ["Moderator", "Chat Moderator", "Twitterbot"]
