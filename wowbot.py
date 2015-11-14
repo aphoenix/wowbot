@@ -10,7 +10,7 @@ import random
 try:
     import creds
 except:
-    print "Need valid creds.py to login"
+    print("Need valid creds.py to login")
     exit()
 
 
