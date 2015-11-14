@@ -1,7 +1,9 @@
-Summon me with a mention.\n
-`@WoWbot rickme` for an inspirational quote.\n
-`@WoWbot class [classname]` to get your class.\n
-I understand these classes: dk, druid, hunter,
-mage, monk, paladin, priest, rogue, shaman,
-warlock, warrior
+Summon me with a mention.
+
+`@WoWbot rickme` for an inspirational quote.
+
+`@WoWbot class [classname]` to get your class.
+
+I understand these classes: dk, druid, hunter, mage, monk, paladin, priest, rogue, shaman, warlock, warrior
+
 `@WoWbot remove class` gets rid of your class colour.\n
