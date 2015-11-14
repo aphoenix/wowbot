@@ -20,7 +20,7 @@ handler = logging.FileHandler(filename='error.log', encoding='utf-8', mode='w')
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 client = discord.Client()
-client.login(discordid, discordpw)
+client.login(creds.discordid, creds.discordpw)
 
 
 with open(quotes.txt) as f:
