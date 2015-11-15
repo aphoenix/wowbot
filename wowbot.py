@@ -30,6 +30,7 @@ with open('helpmessage.txt') as f:
 with open('roles.txt') as f:
     roles = f.readlines()
 
+
 lockroles = ["Moderator", "Chat Moderator", "Twitterbot"]
 cannotset = """Sorry I could not set your class because I did not
             recognize the class you chose. Type `@WoWbot help` for
@@ -74,24 +75,24 @@ def on_message(message):
             
         elif 'class' in message.content.lower():
             doit = True
-            for role in message.author.roles:
-                if role.name in lockroles:
-                    doit = False
             if 'remove' in message.content.lower() and doit:
                 client.replace_roles(message.author,client.servers[1].roles[0])
                 break
-            try:
-                myrole = next(role for role in roles if role in message.content.lower().split())
-            except:
-                myrole = "unrecognized"
-                doit = False
-                client.send_message(message.author, cannotset)
-            print('setting ' + message.author.name + ' as ' + myrole)
-            for server in client.servers:
-                if server.name == 'wow' and doit:
-                    for role in server.roles:
-                        if (myrole == role.name):
-                            client.replace_roles(message.author,role)
+            for role in message.author.roles:
+                if role.name in lockroles:
+                    doit = False
+                try:
+                    myrole = next(role for role in roles if role in message.content.lower().split())
+                except:
+                    myrole = "unrecognized"
+                    doit = False
+                    client.send_message(message.author, cannotset)
+                print('setting ' + message.author.name + ' as ' + myrole)
+                for server in client.servers:
+                    if server.name == 'wow' and doit:
+                        for role in server.roles:
+                            if (myrole == role.name):
+                                client.replace_roles(message.author,role)
 
 
         elif 'rickme' in message.content.lower():
