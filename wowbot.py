@@ -27,8 +27,19 @@ with open('quotes.txt') as f:
     quotes = f.readlines()
 with open('helpmessage.txt') as f:
     helpmessage = f.read()
-with open('roles.txt') as f:
-    roles = f.readlines()
+roles = [
+      'dk',
+      'druid',
+      'hunter',
+      'mage',
+      'monk',
+      'paladin',
+      'priest',
+      'rogue',
+      'shaman',
+      'warlock',
+      'warrior',
+      ]
 
 
 lockroles = ["Moderator", "Chat Moderator", "Twitterbot"]
@@ -53,50 +64,52 @@ def on_ready():
 
 @client.event
 def on_message(message):
-    for client.user.name in message.mentions:
-        if message.author.name == "aphoenix":
-            if 'roles' in message.content.lower():
-                for server in client.servers:
-                    if server.name == 'wow':
-                        wowroles = ''
-                        for role in server.roles:
-                            wowroles += '`'
-                            wowroles += role.name
-                            wowroles += '`'
-                            wowroles += ': '
-                            wowroles += role.id
-                            wowroles += '\n'
-                        client.send_message(message.channel, wowroles[1:])
+    if message.author.name == "aphoenix":
+        if '!roles' in message.content.lower():
+            for server in client.servers:
+                if server.name == 'wow':
+                    wowroles = ''
+                    for role in server.roles:
+                        wowroles += '`'
+                        wowroles += role.name
+                        wowroles += '`'
+                        wowroles += ': '
+                        wowroles += role.id
+                        wowroles += '\n'
+                    client.send_message(message.channel, wowroles[1:])
 
 
-        if 'help' in message.content.lower():
-            client.send_message(message.channel, helpmessage)
-       
-            
-        elif 'class' in message.content.lower():
-            doit = True
-            if 'remove' in message.content.lower() and doit:
-                client.replace_roles(message.author,client.servers[1].roles[0])
-                break
-            for role in message.author.roles:
-                if role.name in lockroles:
-                    doit = False
-                try:
-                    myrole = next(role for role in roles if role in message.content.lower().split())
-                except:
-                    myrole = "unrecognized"
-                    doit = False
-                    client.send_message(message.author, cannotset)
-                print('setting ' + message.author.name + ' as ' + myrole)
-                for server in client.servers:
-                    if server.name == 'wow' and doit:
-                        for role in server.roles:
-                            if (myrole == role.name):
-                                client.replace_roles(message.author,role)
-
-
-        elif 'rickme' in message.content.lower():
-            client.send_message(message.channel, random.choice(quotes))
+    if '!help' in message.content.lower():
+        client.send_message(message.channel, helpmessage)
+   
         
+    elif '!class' in message.content.lower():
+        print(' class is true')
+        doit = True
+        for role in message.author.roles:
+            if role.name in lockroles:
+                doit = False
+        if 'remove' in message.content.lower() and doit:
+            client.replace_roles(message.author,client.servers[1].roles[0])
+            print('setting ' + message.author.name + ' to have no class')
+        try:
+            print('role: ' + role.name)
+            myrole = next(role for role in roles if role in message.content.lower().split())
+            print(myrole)
+        except:
+            myrole = "unrecognized"
+            doit = False
+            client.send_message(message.author, cannotset)
+        print('setting ' + message.author.name + ' as ' + myrole)
+        for server in client.servers:
+            if server.name == 'wow' and doit:
+                for role in server.roles:
+                    if (myrole == role.name):
+                        client.replace_roles(message.author,role)
+
+
+    elif '!rickme' in message.content.lower():
+        client.send_message(message.channel, random.choice(quotes))
+    
 
 client.run()
