@@ -93,7 +93,6 @@ def on_message(message):
             client.replace_roles(message.author,client.servers[1].roles[0])
             print('setting ' + message.author.name + ' to have no class')
         try:
-            print('role: ' + role.name)
             myrole = next(role for role in roles if role in message.content.lower().split())
             print(myrole)
         except:
