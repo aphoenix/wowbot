@@ -38,3 +38,9 @@ You should also be able to look up armory information.
 We've toyed with some WoWhead integration
 
 There will be more Rick quotes.
+
+## Thanks
+
+Thanks @SexualRhinoceros. Your legwork helped out a ton.
+
+The first draft / code spike that led to this bot is at sexualrhinoceros.py

@@ -27,6 +27,8 @@ with open('quotes.txt') as f:
     quotes = f.readlines()
 with open('helpmessage.txt') as f:
     helpmessage = f.read()
+with open('rags.txt') as f:
+    rags = f.readlines()
 roles = [
       'dk',
       'druid',
@@ -109,6 +111,19 @@ def on_message(message):
 
     elif '!rickme' in message.content.lower():
         client.send_message(message.channel, random.choice(quotes))
+
+    elif '!purge' in message.content.lower():
+        for server in client.servers:
+            if server.name == 'wow':
+                purged = random.choice(server.members)
+                ragnarquote = random.choice(rags)
+                saythis = ragnarquote + '\n'
+                saythis += purged.name + ' has been purged.'
+                client.send_message(message.channel,saythis)
+    elif '!butts' in message.content.lower():
+        client.send_message(message.channel,'SexyRhino likes big butts.')
+    elif '!wasthisdank' in message.content.lower():
+        client.send_message(message.channel,'No.')
     
 
 client.run()
