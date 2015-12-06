@@ -216,7 +216,7 @@ def on_message(message):
         elif '!choice' in message.content.lower():
             choices = re.sub('!choice', '', message.content.lower())
             selection = random.choice(choices.split(';'))
-            saythis = message.author.name + ', I choose _' + selection +'_.'
+            saythis = message.author.name + ', I choose **' + selection +'**.'
             client.send_message(message.channel, saythis)
 
 
