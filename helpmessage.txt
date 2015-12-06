@@ -1,6 +1,6 @@
 `!rickme` for an inspirational quote.
 
-`!purge` to bring down the wrath of the Firelord on a foe.
+`!purge` to bring down the wrath of the Firelord on a random foe.
 
 `!class classname` to get your class. When your class is set, your message will be deleted, so you know I processed you.
 
@@ -9,6 +9,8 @@ I understand these classes: dk, druid, hunter, mage, monk, paladin, priest, rogu
 `!class remove` gets rid of your class colour.
 
 `!8ball question` will make me prognosticate for you.
+
+`!choice option1; option2; option3` will help you make a choice.
 
 You can do some reddit-y things: 
 

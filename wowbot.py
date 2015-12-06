@@ -213,13 +213,11 @@ def on_message(message):
                     saythis += purged.name + ' has been purged.'
                     client.send_message(message.channel,saythis)
 
-        #elif '!choice' in message.content.lower():
-        #    words = []
-        #    for word in message.content.lower:
-        #        if word != '!choice':
-        #            words.append(word)
-        #    saythis = 'I choose ' + random.choice(words) + '.'
-        #    client.send_message(message.channel,saythis)
+        elif '!choice' in message.content.lower():
+            choices = re.sub('!choice', '', message.content.lower())
+            selection = random.choice(choices.split(';'))
+            saythis = message.author.name + ', I choose _' + selection +'_.'
+            client.send_message(message.channel, saythis)
 
 
         elif '!8ball' in message.content.lower():
