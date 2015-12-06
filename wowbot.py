@@ -112,7 +112,8 @@ def on_message(message):
                         wowroles += role.id
                         wowroles += '\n'
                     client.send_message(message.channel, wowroles[1:])
-    
+
+
     if message.author.name == "SexualRhinoceros":
         if '!butts' in message.content.lower():
             client.send_message(message.channel, '<3')
@@ -120,8 +121,8 @@ def on_message(message):
 
     if '!help' in message.content.lower():
         client.send_message(message.channel, helpmessage)
-   
-        
+
+
     elif '!class' in message.content.lower():
         print(' class is true')
         doit = True
@@ -145,8 +146,8 @@ def on_message(message):
                     if (myrole == role.name):
                         client.replace_roles(message.author,role)
                         client.delete_message(message)
-   
-     
+
+
     elif '!sticky' in message.content.lower():
         if 'bottom' in message.content.lower():
             sub = wowsub.get_sticky(bottom=True)
@@ -163,8 +164,8 @@ def on_message(message):
     elif '!rising' in message.content.lower():
         sub = random_reddit_submission('rising')
         say_reddit_submission(sub, message)
-   
-   
+
+
     elif '!new' in message.content.lower():
         sub = random_reddit_submission('new')
         say_reddit_submission(sub, message)
@@ -182,11 +183,11 @@ def on_message(message):
                 saythis = ragnarquote + '\n'
                 saythis += purged.name + ' has been purged.'
                 client.send_message(message.channel,saythis)
-    
+
 
     elif '!aphoenix' in message.content.lower():
         global last_summons
-        time_passed = time.time() - last_summons 
+        time_passed = time.time() - last_summons
         print(time_passed)
         if time_passed > 3600:
             saythis = message.author.name + ' wants you in Discord'
@@ -198,7 +199,6 @@ def on_message(message):
                 pass
         else:
             client.send_message(message.channel, 'You are doing too much aphoenix summoning.')
-            
-    
+
 
 client.run()

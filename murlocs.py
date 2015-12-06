@@ -10,6 +10,7 @@ try:
     import creds
 except:
     print("Need valid creds.py to login")
+    exit()
 
 
 logger = logging.getLogger('discord')
@@ -53,5 +54,4 @@ def on_ready():
         print(server.name)
 
 
-def check_answer(message):
-    pass
+client.run()
