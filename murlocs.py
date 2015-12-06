@@ -10,6 +10,7 @@ try:
     import creds
 except:
     print("Need valid creds.py to login")
+    exit(1)
 
 
 logger = logging.getLogger('discord')
@@ -35,8 +36,11 @@ roles = [
       'warlock',
       'warrior',
       ]
+
+
 for role in roles:
     print(role)
+
 
 if not client.is_logged_in:
     print('Login fail')
@@ -53,5 +57,6 @@ def on_ready():
         print(server.name)
 
 
-def check_answer(message):
-    pass
+@client.event
+def on_message(message):
+    print(message.channel + ': ' + message.content)

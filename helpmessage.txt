@@ -2,15 +2,17 @@
 
 `!purge` to bring down the wrath of the Firelord on a foe.
 
-`!class [classname]` to get your class. When your class is set, your message will be deleted, so you know I processed you.
+`!class classname` to get your class. When your class is set, your message will be deleted, so you know I processed you.
 
 I understand these classes: dk, druid, hunter, mage, monk, paladin, priest, rogue, shaman, warlock, warrior
 
 `!class remove` gets rid of your class colour.
 
+`!8ball question` will make me prognosticate for you.
+
 You can do some reddit-y things: 
 
-* `!hot` `!new` `!rising` get hot, new or rising posts from reddit.
+* `!hot` `!new` `!rising` `!controversial` gets posts of that type from the /r/wow.
 * `!sticky` and `!sticky bottom` fetch links to the stickies. `!sticky bottom` is hilarious.
 
-If you are *desperate* you can attempt to summon aphoenix with `!aphoenix`. Overuse of this will result in displeasure and the ability to do this may be revoked.
+The `!aphoenix` command is currently not working until aphoenix fixes his phone or buys a new one.
