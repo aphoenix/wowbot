@@ -75,13 +75,13 @@ def say_reddit_submission(submission):
 
 def random_reddit_submission(subtype):
     if subtype == 'hot':
-        submissions = wowsub.get_hot(limit = 27) 
+        submissions = wowsub.get_hot(limit = 27)
     elif subtype == 'rising':
-        submissions = wowsub.get_rising(limit = 25) 
+        submissions = wowsub.get_rising(limit = 25)
     elif subtype == 'new':
-        submissions = wowsub.get_new(limit = 25) 
-	elif subtype =='controversial':
-		submissions = wowsub.get_controversial(limit = 25)
+        submissions = wowsub.get_new(limit = 25)
+    elif subtype =='controversial':
+        submissions = wowsub.get_controversial(limit = 25)
     else:
         print("Not a valid submission type")
         return(False)
