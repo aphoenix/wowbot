@@ -68,7 +68,7 @@ if not client.is_logged_in:
     exit(1)
 
 
-def say_reddit_submission(submission):
+def say_reddit_submission(submission, message):
     saythis = submission.short_link
     client.send_message(message.channel,saythis)
 
