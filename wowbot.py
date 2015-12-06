@@ -59,6 +59,7 @@ cannotset = """Sorry I could not set your class because I did not
 r = praw.Reddit(user_agent=user_agent)
 r.login(creds.redditid,creds.redditpw) #replace with OAuth soon
 
+
 wowsub = r.get_subreddit('WoW')
 
 
@@ -66,10 +67,11 @@ if not client.is_logged_in:
     print('Login fail')
     exit(1)
 
+
 def say_reddit_submission(submission):
     saythis = submission.short_link
     client.send_message(message.channel,saythis)
-    
+
 
 @client.event
 def on_ready():
@@ -102,8 +104,8 @@ def on_message(message):
 
         if '!help' in message.content.lower():
             client.send_message(message.channel, helpmessage)
-       
-            
+
+
         elif '!class' in message.content.lower():
             print(' class is true')
             doit = True
@@ -126,8 +128,8 @@ def on_message(message):
                     for role in server.roles:
                         if (myrole == role.name):
                             client.replace_roles(message.author,role)
-       
-         
+
+
 #        elif '!sticky' in message.content.lower():
 #            if 'bottom' in message.content.lower():
 #                sub = wowsub.get_sticky(bottom=True)
@@ -154,7 +156,7 @@ def on_message(message):
 #            for sub in submission:
 #                saythis = sub.short_link 
 #                client.send_message(message.channel,saythis)
-        
+
 
         elif '!rickme' in message.content.lower():
             client.send_message(message.channel, random.choice(quotes))
@@ -183,7 +185,8 @@ def on_message(message):
             saythis = message.author.name + ' asked: _' + question + '_\n'
             saythis += 'The 8 Ball says: ' + random.choice(ball)
             client.send_message(message.channel, saythis)
-            
+
+
         #elif '!aphoenix' in message.content.lower():
         #    global last_summons
         #    time_passed = time.time() - last_summons 
@@ -198,7 +201,6 @@ def on_message(message):
         #            pass
         #    else:
         #        client.send_message(message.channel, 'You are doing too much aphoenix summoning.')
-                
-        
+
 
 client.run()
