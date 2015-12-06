@@ -130,7 +130,7 @@ def on_message(message):
             client.send_message(message.channel, helpmessage)
 
 
-        if '!id' in message.content.lower():
+        elif '!id' in message.content.lower():
             print(message.author.name + ': ' + message.author.id)
 
 
@@ -201,18 +201,6 @@ def on_message(message):
             say_reddit_submission(sub, message)
 
 
-        elif '!rickme' in message.content.lower():
-            client.send_message(message.channel, random.choice(quotes))
-
-        elif '!purge' in message.content.lower():
-            for server in client.servers:
-                if server.name == 'wow':
-                    purged = random.choice(server.members)
-                    ragnarquote = random.choice(rags)
-                    saythis = ragnarquote + '\n'
-                    saythis += purged.name + ' has been purged.'
-                    client.send_message(message.channel,saythis)
-
         elif '!choice' in message.content.lower():
             choices = re.sub('!choice', '', message.content.lower())
             selection = random.choice(choices.split(';'))
@@ -226,6 +214,9 @@ def on_message(message):
             saythis = message.author.name + ' asked: _' + question + '_\n'
             saythis += 'The 8 Ball says: ' + random.choice(ball)
             client.send_message(message.channel, saythis)
+
+
+        elif '!avatar' in message.content.lower():
 
 
         #elif '!aphoenix' in message.content.lower():
