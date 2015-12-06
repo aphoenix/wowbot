@@ -130,6 +130,10 @@ def on_message(message):
             client.send_message(message.channel, helpmessage)
 
 
+        if '!id' in message.content.lower():
+            print(message.author.name + ': ' + message.author.id)
+
+
         elif '!class' in message.content.lower():
             print(' class is true')
             doit = True
