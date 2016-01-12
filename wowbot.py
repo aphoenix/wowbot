@@ -33,6 +33,8 @@ with open('rags.txt') as f:
     rags = f.readlines()
 with open('8ball.txt') as f:
     ball = f.readlines()
+with open('rules.txt') as f:
+    rules = f.readlines()
 
 
 roles = [
@@ -216,23 +218,37 @@ def on_message(message):
             client.send_message(message.channel, saythis)
 
 
-        elif '!avatar' in message.content.lower():
+        #elif '!avatar' in message.content.lower():
+        #    pass
+
+        elif '!faq' in message.content.lower():
+            saythis = "Check out the faq at: http://wowgfaq.neocities.org/"
+            client.send_message(message.channel, saythis)
+
+        elif '!help' in message.content.lower():
+               
 
 
-        #elif '!aphoenix' in message.content.lower():
-        #    global last_summons
-        #    time_passed = time.time() - last_summons 
-        #    print(time_passed)
-        #    if time_passed > 3600:
-        #        saythis = message.author.name + ' wants you in Discord'
-        #        try:
-        #            r.send_message('aphoenix', 'Discord Summons', saythis)
-        #            client.send_message(message.channel, 'Aphoenix has been summoned.')
-        #            last_summons = time.time()
-        #        except:
-        #            pass
-        #    else:
-        #        client.send_message(message.channel, 'You are doing too much aphoenix summoning.')
+        elif '!aphoenix' in message.content.lower():
+            global last_summons
+            time_passed = time.time() - last_summons 
+            print(time_passed)
+            if time_passed > 3600:
+                saythis = message.author.name + ' wants you in Discord'
+                try:
+                    r.send_message('aphoenix', 'Discord Summons', saythis)
+                    client.send_message(message.channel, 'Aphoenix has been summoned.')
+                    last_summons = time.time()
+                except:
+                    pass
+            else:
+                client.send_message(message.channel, 'You are doing too much aphoenix summoning.')
 
 
-client.run()
+while(True):
+    try:
+        client.run()
+    except Exception as e:
+        print(e)
+        time.sleep(300)
+

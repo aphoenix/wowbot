@@ -17,4 +17,6 @@ You can do some reddit-y things:
 * `!hot` `!new` `!rising` `!controversial` gets posts of that type from the /r/wow.
 * `!sticky` and `!sticky bottom` fetch links to the stickies. `!sticky bottom` is hilarious.
 
-The `!aphoenix` command is currently not working until aphoenix fixes his phone or buys a new one.
+`!rules` to get the rules of this discord PMed to you.
+
+`!faq` for a handy dandy FAQ.
