@@ -119,6 +119,20 @@ def on_message(message):
                             wowroles += role.id
                             wowroles += '\n'
                         client.send_message(message.channel, wowroles[1:])
+            if '!colour' in message.content.lower():
+                try:
+                    myrole = next(role for role in roles if role in
+                                    message.content.lower().split())
+                except:
+                    myrole = 'unrecognized'
+                    print(myrole)
+                octothorpe = message.content.lower().index("#")
+                end = octothorpe + 7
+                rolecolour = message.content.lower()[octothorpe:end]
+                print('Setting ' + myrole + ' to ' + rolecolour)
+                for role in server.roles:
+                    if (myrole ==role.name):
+                        client.edit_role(message.server, role, colour=rolecolour)
 
 
         if message.author.id == "77511942717046784":
@@ -217,6 +231,7 @@ def on_message(message):
 
 
         elif '!avatar' in message.content.lower():
+            pass
 
 
         #elif '!aphoenix' in message.content.lower():
