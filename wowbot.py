@@ -1,11 +1,14 @@
-#!/opt/python3.3/bin/python
+#!/opt/python3.5/bin/python
 
+import asyncio
 import praw
 import time
 import discord
 import logging
 import random
 import re
+import os
+import io
 
 try:
     import creds
@@ -24,18 +27,24 @@ client.login(creds.discordid, creds.discordpw)
 user_agent = "Aphoenix's Discord / Reddit integration system."
 thing_limit = 25
 last_summons = time.time()
+script_root = os.path.dirname(os.path.realpath(__file__))
 
-with open('quotes.txt') as f:
+with io.open(os.path.join(script_root, 'quotes.txt'),'r',encoding='utf8') as f:
     quotes = f.readlines()
-with open('helpmessage.txt') as f:
+with io.open(os.path.join(script_root, 'helpmessage.txt'),'r',encoding='utf8') as f:
     helpmessage = f.read()
-with open('rags.txt') as f:
+with io.open(os.path.join(script_root, 'rags.txt'),'r',encoding='utf8') as f:
     rags = f.readlines()
-with open('8ball.txt') as f:
+with io.open(os.path.join(script_root, '8ball.txt'),'r',encoding='utf8') as f:
     ball = f.readlines()
-with open('rules.txt') as f:
-    rules = f.readlines()
+with io.open(os.path.join(script_root, 'rules.txt'),'r',encoding='utf8') as f:
+    rules = f.read()
 
+
+ignore = [
+      'WoWbot',
+      'RH1-N0',
+      ]
 
 roles = [
       'dk',
@@ -106,7 +115,7 @@ def on_ready():
 
 @client.event
 def on_message(message):
-    if message.author.id != client.user.id:
+    if message.author.name not in ignore:
         if message.author.id == "113097494489006080":
             if '!roles' in message.content.lower():
                 print(message.author.name + ': ' + message.content)
@@ -239,7 +248,8 @@ def on_message(message):
             saythis = "Check out the faq at: http://wowgfaq.neocities.org/"
             client.send_message(message.channel, saythis)
 
-        elif '!help' in message.content.lower():
+        elif '!rules' in message.content.lower():
+            client.send_message(message.author, rules)
                
 
 
